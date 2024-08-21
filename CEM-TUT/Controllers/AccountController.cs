@@ -10,6 +10,7 @@ namespace CEM_TUT.Controllers
 
         public AccountController(AppDbContext context)
         {
+            //testing
             _context = context;
         }
         public IActionResult Index()
