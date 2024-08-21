@@ -1,0 +1,162 @@
+﻿@model ServiceProvider
+
+@{
+    ViewData["Title"] = "Dashboard";
+}
+<link href="https://fonts.googleapis.com/css?family=Poppins:600&display=swap" rel="stylesheet">
+
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined"
+      rel="stylesheet">
+
+<link href="~/css/StyleSheet1.css" rel="stylesheet" />
+
+<body>
+
+    <div class="grid-container">
+
+        <!--Header-->
+        <header class="header">
+            <div class="menu-icon" onclick="openSiderbar()">
+                <span class="material-icons-outlined">menu</span>
+            </div>
+
+            <div class="header-left">
+                <span>Username: @Model.username</span>
+            </div>
+            <div class="header-right">
+                <span class="material-icons-outlined">notifications</span>
+                <span class="material-icons-outlined">email</span>
+                <span class="material-icons-outlined">account_circle</span>
+            </div>
+        </header>
+
+        <!--sidebar-->
+
+        <aside id="sidebar">
+
+            <div class="side-tilte">
+                <div class="sidebar-brand">
+                    <span class="material-icons-outlined">business</span>@Model.providerName
+                </div>
+                <span class="material-icons-outlined" onclick="closeSidebar()">clsoe</span>
+            </div>
+
+            <ul class="sidebar-list">
+                <li class="sidebar-list-item" href="#dashboard" onclick="loadContent('#dashboard')">
+
+                    <span class="material-icons-outlined">dashboard</span> <a href="https://localhost:7089/Home/Dashboard">DashBoard </a>
+
+
+                </li>
+
+                <li class="sidebar-list-item" onclick="loadContent('#analytics')">
+                    <span class="material-icons-outlined">
+                        show_chart
+                    </span><a href="https://localhost:7089/Home/Analytics">Analytics </a>
+                </li>
+
+                <li class="sidebar-list-item" href="#services" class="quickLinks" onclick="loadContent('#services')">
+
+                    <span class="material-icons-outlined">
+                        production_quantity_limits
+                    </span> <a href="https://localhost:7089/Home/Services">Manage Services </a>
+
+
+
+                </li>
+                <li class="sidebar-list-item" href="#geoalerts" onclick="loadContent('#geoalerts')">
+                    <span class="material-icons-outlined">
+                        notifications
+                    </span><a href="https://localhost:7089/Home/Geoalerts">Geographical alerts </a>
+                </li>
+                <li class="sidebar-list-item" href="#feedbacks" onclick="loadContent('#feedbacks')">
+                    <span class="material-icons-outlined">
+                        thumb_up_alt
+                    </span><a href="https://localhost:7089/Home/Feedbacks">Feedbacks</a>
+                </li>
+            </ul>
+        </aside>
+
+        <!--main-->
+
+        <main class="main-container" id="main-content">
+
+
+
+            <div id="#dashboard" class="displayOnclick">
+
+
+                <div class="main-title">
+                    <p class="font-weight-bold">Geographical Alerts</p>
+
+                </div>
+                
+                <input type="hidden" id="myData1" value="@ViewBag.proivnce">
+                <div id="container"></div>
+
+
+
+
+                <hr />
+
+                <div class="row mt-5">
+
+                    <div class="col-12">
+
+                        <table class="table table-bordered" id="crudTable">
+                            <thead>
+                                <tr>
+                                    <th>Title</th>
+                                    <th>Description</th>
+                                    <th>Location</th>
+                                    <th>Service Name</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                               
+                                    @foreach (var item in ViewBag.Geoalerts)
+                                    {
+                                    <tr>
+                                        <td>@item.title</td>
+                                        <td>@item.description</td>
+                                        <td>@item.loaction</td>
+                                        <td>@item.serviceName</td>
+                                    </tr>
+                                    }
+                               
+                            </tbody>
+                        </table>
+                    </div>
+
+
+                </div>
+               
+
+            </div>
+
+           
+        </main>
+
+
+    </div>
+
+
+
+    <div id="container"></div>
+
+    <script src="https://code.highcharts.com/maps/highmaps.js"></script>
+    <script src="https://code.highcharts.com/maps/modules/exporting.js"></script>
+  
+
+
+    <!--Scripts-->
+    <!--ApexCharts-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/apexcharts/3.48.0/apexcharts.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!--cutom js-->
+    <script type="text/javascript" src="~/js/site.js"></script>
+
+   
+
+</body>
+

@@ -1,0 +1,177 @@
+﻿@model ServiceProvider
+
+
+@{
+    ViewData["Title"] = "Dashboard";
+}
+<link href="https://fonts.googleapis.com/css?family=Poppins:600&display=swap" rel="stylesheet">
+
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined"
+      rel="stylesheet">
+
+<link href="~/css/StyleSheet1.css" rel="stylesheet" />
+
+<body>
+
+    <div class="grid-container">
+
+        <!--Header-->
+        <header class="header">
+            <div class="menu-icon" onclick="openSiderbar()">
+                <span class="material-icons-outlined">menu</span>
+            </div>
+
+            <div class="header-left">
+                <span>Username: @Model.username</span>
+            </div>
+            <div class="header-right">
+                <span class="material-icons-outlined">notifications</span>
+                <span class="material-icons-outlined">email</span>
+                <span class="material-icons-outlined">account_circle</span>
+            </div>
+        </header>
+
+        <!--sidebar-->
+
+        <aside id="sidebar">
+
+            <div class="side-tilte">
+                <div class="sidebar-brand">
+                    <span class="material-icons-outlined">business</span>@Model.providerName
+                </div>
+                <span class="material-icons-outlined" onclick="closeSidebar()">clsoe</span>
+            </div>
+
+            <ul class="sidebar-list">
+                <li class="sidebar-list-item" href="#dashboard" onclick="loadContent('#dashboard')">
+
+                    <span class="material-icons-outlined">dashboard </span><a href="https://localhost:7089/Home/Dashboard">DashBoard </a>
+
+
+                </li>
+
+                <li class="sidebar-list-item" onclick="loadContent('#analytics')">
+                    <span class="material-icons-outlined">
+                        show_chart
+                    </span><a href="https://localhost:7089/Home/Analytics">Analytics </a>
+                </li>
+
+                <li class="sidebar-list-item" href="#services" class="quickLinks" onclick="loadContent('#services')">
+
+                    <span class="material-icons-outlined">
+                        production_quantity_limits
+                    </span> <a href="https://localhost:7089/Home/Services">Manage Services </a>
+
+
+
+                </li>
+                <li class="sidebar-list-item" href="#geoalerts" onclick="loadContent('#geoalerts')">
+                    <span class="material-icons-outlined">
+                        notifications
+                    </span><a href="https://localhost:7089/Home/Geoalerts">Geographical alerts </a>
+                </li>
+                <li class="sidebar-list-item" href="#feedbacks" onclick="loadContent('#feedbacks')">
+                    <span class="material-icons-outlined">
+                        thumb_up_alt
+                    </span><a href="https://localhost:7089/Home/Feedbacks">Feedbacks</a>
+                </li>
+            </ul>
+        </aside>
+
+        <!--main-->
+
+        <main class="main-container" >
+
+                <div class="main-title">
+                    <p class="font-weight-bold">Analyticcs</p>
+
+                </div>
+
+            
+                <div class="main-cards">
+                    <div class="card">
+                        <div class="card-inner">
+                               <p>Customers</p>
+                        <span class="material-icons-outlined">
+                            people
+                        </span>
+                        </div>
+                    <p>@ViewBag.customerList</p>
+                    </div>
+
+                <div class="card">
+                    <div class="card-inner">
+                        <p>Services</p>
+                        <span class="material-icons-outlined">
+                            inventory_2
+                        </span>
+                    </div>
+                    <p>4</p>
+                </div>
+
+                <div class="card">
+                    <div class="card-inner">
+                        <p>Most used Service</p>
+                        <span class="material-icons-outlined">
+                            people
+                        </span>
+                    </div>
+                    <p>@ViewBag.used</p>
+                </div>
+                <div class="card">
+                    <div class="card-inner">
+                        <p> Least used service</p>
+                        <span class="material-icons-outlined">
+                            people
+                        </span>
+                    </div>
+                    <p>@ViewBag.unUsed</p>
+                </div>
+
+                </div>
+                    
+
+               
+                <div class="charts">
+
+                      <div class="charts-card">
+                    <input type="hidden" id="myData1" value="@ViewBag.AgeGroup">
+                         <p class="chart-title">Age Group</p>
+
+                    <div>
+                        <canvas id="myChart" ></canvas>
+                    </div>
+
+                      </div>
+
+                     <div class="charts-card">
+                        <p class="chart-title">Gender</p>
+                    <input type="hidden" id="myData2" value="@ViewBag.genderCounter">
+                
+                        <div id="donut-chart">
+                          </div>
+
+                     </div>
+
+
+                 </div>
+            
+
+        </main>
+
+    </div>
+  
+
+
+
+    <!--Scripts-->
+    <!--Charts Js-->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        <!--ApexCharts-->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/apexcharts/3.48.0/apexcharts.min.js"></script>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <!--cutom js-->
+
+
+        <script type="text/javascript" src="~/js/dashboard.js"></script>
+</body>

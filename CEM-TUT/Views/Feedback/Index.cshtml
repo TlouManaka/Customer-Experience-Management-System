@@ -1,0 +1,166 @@
+﻿@{
+    ViewData["Title"] = "Feedback";
+}
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+<link href="~/css/Feedback.css" rel="stylesheet" />
+<script src="https://kit.fontawesome.com/4a0046fff5.js" crossorigin="anonymous"></script>
+
+<style>
+    body {
+        font-family: Ariel, san-serif;
+        margin: 0;
+        padding: 0;
+        background-color: bisque;
+    }
+
+    main {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+    }
+
+    .card {
+        background-color: rgb(255, 255, 255);
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0,0,0, 0.1);
+    }
+
+    .form-group {
+        margin-bottom: 20px;
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+
+    label {
+        display: inline-flex;
+        align-items: center;
+        margin-right: 15px;
+        vertical-align: middle;
+        position: relative;
+    }
+
+        label img {
+            width: 30px;
+            height: 30px;
+            margin-bottom: 10px;
+            filter: brightness(1.5) hue-rotate(30deg);
+        }
+
+    input[typy="checkbox"]:hover + a {
+        color: #3b4c58;
+    }
+
+    textarea {
+        width: 100%;
+        padding: 10px;
+        border-radius: 4px;
+        ;
+        border: 1px solid #ccc;
+        resize: none;
+    }
+
+    button {
+        padding: 10px 20px;
+        background-color: #ffa200;
+        color: rgb(255, 255, 255);
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+
+        button:hover {
+            background-color: darkslategray;
+        }
+
+    select {
+        width: 100%;
+        padding: 10px;
+        border-radius: 4px;
+        border: 1px solid #ccc;
+    }
+</style>
+<body>
+    <main>
+        <div class="card">
+            <h3>Provide feedback</h3>
+            <form  asp-action="index" method="post">
+
+                <div class="form-group">
+                    <label for="customerName"> Please Enter your name!</label>
+                    <input type="text" name="customerName" />
+                </div>
+
+                <div class="form-group">
+                    <label for="">Select a service provider for your feedback:</label>
+                    <select name="provider" id="providerId">
+                        <option value="none" Selected>Select a service provider</option>
+                        <option value="MTN">MTN</option>
+                        <option value="VODACOM">Vodacom</option>
+                        <option value="TELCOM">Telkom</option>
+                        <option value="CELL-C">Cell-C</option>
+                    </select>   
+                </div>
+                <div class="form-group">
+                    <label for="">Select a service for your feedback:</label>
+                    <select name="service" id="providerId">
+                        <option value="" Selected>Select a Service </option>
+                        <option value="All NETWORK DATA">All NETWORK DATA</option>
+                        <option value="SMS">SMS</option>
+                        <option value="NIGHT SUFFER">NIGHT SUFFER</option>
+                        <option value="ALL NETWORK MINUTES">ALL NETWORK MINUTES</option>
+                    </select>
+                </div>
+
+                <label for="">What do you think of the services that service  provide?</label>
+                <div>
+                    <label>
+                        <input type="radio" name="rating" value="0" />
+                        <img src="./img/mood-angry.svg" alt="Terrible" />
+                        <span>Terrible</span>
+
+                    </label>
+                    <label>
+                        <input type="radio" name="rating"  value="2"/>
+                        <img src="./img/mood-sad-2.svg" alt="Bad" />
+                        <span>Bad</span>
+                    </label>
+                    <label>
+                        <input type="radio" name="rating" value="6" />
+                        <img src="./img/mood-smile.svg" alt="Okay" />
+                        <span>Okay</span>
+
+                    </label>
+                    <label>
+                        <input type="radio" name="rating"  value="8"/>
+                        <img src="./img/mood-happy.svg" alt="Good" />
+                        <span>Good</span>
+                    </label>
+                    <label>
+                        <input type="radio" name="rating" value="10" />
+                        <img src="./img/mood-happy.svg" alt="Good" />
+                        <span>Excellent</span>
+                    </label>
+                </div>
+                <div class="form-group">
+                    <label for="comments"> Please put your views and comments below in alignment with your rating</label>
+                    <textarea name="comments " id="comments " cols="20" rows="5"></textarea>
+                </div>
+               
+                <div class="form-group">
+                    <button>Submit</button>
+                    <button type="submit" value="Feedback" >Cancel</button>
+                </div>
+
+            </form>
+        </div>
+
+    </main>
+</body>

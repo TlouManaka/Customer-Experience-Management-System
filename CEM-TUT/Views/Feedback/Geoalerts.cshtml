@@ -1,0 +1,39 @@
+﻿
+}
+
+@{
+    ViewData["Title"] = "Geolaerts";
+}
+
+
+<link href="https://fonts.googleapis.com/css?family=Poppins:600&display=swap" rel="stylesheet">
+<script src="https://kit.fontawesome.com/a81368914c.js"></script>
+
+<link href="~/css/register.css" rel="stylesheet" />
+
+
+<body>
+    <div class="wrapper">
+        <h2>Please report an outage in your area</h2>
+        <form asp-action="Geoalerts" method="post">
+
+            <div class="input-box">
+                <input type="text" name="title" placeholder="Subject" required>
+            </div>
+            <div class="input-box">
+                <input type="text" name="description" placeholder="Description" required>
+            </div>
+            <div class="input-box">
+                <input type="text" name="location" placeholder="Enter your Province" required>
+            </div>
+            <div class="input-box">
+                <input type="text" name="serviceName" placeholder="Service Affected" required>
+            </div>
+            
+            <div class="input-box button">
+                <input type="Submit" value="Geoalerts">
+            </div>
+            
+        </form>
+    </div>
+</body>
